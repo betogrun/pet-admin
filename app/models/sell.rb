@@ -10,6 +10,9 @@ class Sell < ApplicationRecord
   has_many :sell_services
   has_many :services, through: :sell_services
 
+  belongs_to :discount
+  belongs_to :client
+
   before_save :set_total
  
 
@@ -19,7 +22,7 @@ class Sell < ApplicationRecord
  
   def self.for_fae_index
     order(:id)
-  
+  end
     
   private
  
@@ -36,6 +39,5 @@ class Sell < ApplicationRecord
     self.total = total
   end
 
-  belongs_to :discount
-  belongs_to :client
+  
 end
